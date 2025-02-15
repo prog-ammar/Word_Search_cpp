@@ -135,7 +135,7 @@ void diagonal1(char board[][col],string str,int nr,int nc,int s)
 			if(i==j && j+s<=nc-1)
 			{
 				if(str[l]==board[i][j+s])
-		    {
+		        {
 		    	paired start;
 		    	if(l==0)
 				{
@@ -151,8 +151,29 @@ void diagonal1(char board[][col],string str,int nr,int nc,int s)
 		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded  first diagonal top to bottom"<<endl;
 					wordfound=true;
 			    }
-		  	
-		     }
+		        }
+			}
+
+            if(i==j && j-s>=0)
+			{
+				if(str[l]==board[i][j-s])
+		        {
+		    	paired start;
+		    	if(l==0)
+				{
+                  start.x=i;
+				  start.y=j;
+				}
+		  	    l++;
+		  	    if(l==len)
+		  	     {
+		  	     	paired end;
+					end.x=i;
+					end.y=j;
+		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded  first diagonal top to bottom"<<endl;
+					wordfound=true;
+			    }
+		        }
 			}
 		 } 
 	}
@@ -169,7 +190,7 @@ void diagonal2(char board[][col],string str,int nr,int nc,int s)
 			if(i==j && j+s<=nc-1)
 			{
 				if(str[l]==board[i][j+s])
-		    {
+		       {
 		    	paired start;
 		    	if(l==0)
 				{
@@ -185,8 +206,30 @@ void diagonal2(char board[][col],string str,int nr,int nc,int s)
 		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded  first diagonal bottom to top"<<endl;
 				    wordfound=true;
 			    }
-		  	
-		     }
+		      }
+			}
+
+
+            if(i==j && j-s>=0)
+			{
+				if(str[l]==board[i][j-s])
+		       {
+		    	paired start;
+		    	if(l==0)
+				{
+                   start.x=i;
+				   start.y=j;
+				}
+		  	    l++;
+		  	    if(l==len)
+		  	     {
+		  	     	paired end;
+					end.x=i;
+					end.y=j;
+		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded  first diagonal bottom to top"<<endl;
+				    wordfound=true;
+			    }
+		      }
 			}
 		 } 
 	}
@@ -202,8 +245,9 @@ void diagonal3(char board[][col],string str,int nr,int nc,int s)
 		{
 			if(i==nc-j-1 && j-s>=0)
 			{
+                
 				if(str[l]==board[i][j-s])
-		    {
+		        {
 		    	paired start;
 		    	if(l==0)
 		  	    {
@@ -219,8 +263,31 @@ void diagonal3(char board[][col],string str,int nr,int nc,int s)
 		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded second diagonal top to bottom"<<endl;
 					wordfound=true;
 			    }
-		  	
-		     }
+		      }
+			}
+
+
+            if(i==nc-j-1 && j+s<=nc-1)
+			{
+                
+				if(str[l]==board[i][j+s])
+		        {
+		    	paired start;
+		    	if(l==0)
+		  	    {
+					start.x=i;
+					start.y=j;
+				}
+		  	    l++;
+		  	    if(l==len)
+		  	    {
+		  	     	paired end;
+					end.x=i;
+					end.y=j;
+		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded second diagonal top to bottom"<<endl;
+					wordfound=true;
+			    }
+		      }
 			}
 		 } 
 	}
@@ -269,11 +336,11 @@ void diagonal(char board[][col],string str,int nr,int nc)
     {
         diagonal2(board,str,nr,nc,i);
     }
-    for(int i=0;i<nc-1;i++)
+    for(int i=0;i<nc;i++)
     {
         diagonal3(board,str,nr,nc,i);
     }
-    for(int i=0;i<nc-1;i++)
+    for(int i=0;i<nc;i++)
     {
         diagonal4(board,str,nr,nc,i);
     }
