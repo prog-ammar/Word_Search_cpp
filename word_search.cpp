@@ -272,7 +272,7 @@ int main()
 	  diagonal(board,str,r,c);
 	  if(!wordfound)
 	  {
-	  	cout<<"String Not Found";
+	  	cout<<"String Not Found"<<endl;
 	  }	
 	}while(str!="exit");
 }
