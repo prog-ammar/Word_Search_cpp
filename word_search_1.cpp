@@ -218,9 +218,9 @@ void diagonal2(char board[][col],string str,int nr,int nc,int s)
 	}
 
     l=0;
-    for(int i=0;i<nr;i++)
+    for(int i=nr-1;i>=0;i--)
     {
-        for(int j=0;j<nc;j++)
+        for(int j=nc-1;j>=0;j--)
         {
             if(i==j && j-s>=0)
 			{
@@ -414,12 +414,16 @@ int main()
 	  wordfound=false;
 	  cout<<"Enter Word : ";
 	  cin>>str;
+      if(str=="exit")
+      {
+        break;
+      }
 	  horizontal(board,str,r,c);
 	  vertical(board,str,r,c);
 	  diagonal(board,str,r,c);
 	  if(!wordfound)
 	  {
-	  	cout<<"String Not Found";
+	  	cout<<"String Not Found"<<endl;
 	  }	
-	}while(str!="exit");
+	}while(1);
 }
