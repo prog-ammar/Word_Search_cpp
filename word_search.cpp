@@ -192,7 +192,7 @@ void diagonal(char board[][col],string str,int nr,int nc)
 	{
 		for(int j=0;j<nc;j++)
 		{
-			if(i==col-j-1)
+			if(i==nc-j-1)
 			{
 				if(str[l]==board[i][j])
 		    {
@@ -222,7 +222,7 @@ void diagonal(char board[][col],string str,int nr,int nc)
 	{
 		for(int j=nc-1;j>=0;j--)
 		{
-			if(i==col-j-1)
+			if(i==nc-j-1)
 			{
 				if(str[l]==board[i][j])
 		    {
