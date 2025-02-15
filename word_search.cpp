@@ -5,6 +5,12 @@ using namespace std;
 const int col=3;
 bool wordfound;
 
+struct paired
+{
+	int x;
+	int y;
+};
+
 void horizontal(char board[][col],string str)
 {
 	int len=str.length();
@@ -16,14 +22,19 @@ void horizontal(char board[][col],string str)
 	{
 		if(str[l]==board[row][i])
 		{
-			int start;
+			paired start;
 			if(l==0)
-		  	start=i;
+			{
+				start.x=row;
+				start.y=i;
+			}
 			l++;
 			if(l==len)
 			{
-				int end=i;
-				cout<<str<<" at ("<<start<<","<<end<<") Finded horizontal left to right"<<endl;
+				paired end;
+				end.x=row;
+				end.y=i;
+				cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded horizontal left to right"<<endl;
 				wordfound=true;
 			}
 		}
@@ -36,14 +47,19 @@ void horizontal(char board[][col],string str)
 	{
 		  if(str[l]==board[row][i])
 		  {
-		  	int start;
+		  	paired start;
 		  	if(l==0)
-		  	start=i;
+			{
+				start.x=row;
+				start.y=i;
+			}
 		  	l++;
 		  	if(l==len)
 		  	{
-		  		int end=i;
-		  		cout<<str<<" at ("<<start<<","<<end<<") Finded vertical right to left"<<endl;
+		  		paired end;
+				end.x=row;
+				end.y=i;
+		  		cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded vertical right to left"<<endl;
 				wordfound=true;
 			  }
 		  	
@@ -63,14 +79,19 @@ void vertical(char board[][col],string str)
 	{
 		if(str[l]==board[i][column])
 		{
-			int start;
+			paired start;
 			if(l==0)
-		  	start=i;
+			{
+               start.x=i;
+			   start.y=column;
+			}
 			l++;
 			if(l==len)
 			{
-				int end=i;
-				cout<<str<<" at ("<<start<<","<<end<<") Finded vertical top to bottom"<<endl;
+				paired end;
+				end.x=i;
+				end.y=column;
+				cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded vertical top to bottom"<<endl;
 				wordfound=true;
 			}
 		}
@@ -83,14 +104,19 @@ void vertical(char board[][col],string str)
 	{
 		  if(str[l]==board[i][column])
 		  {
-		  	int start;
+		  	paired start;
 		  	if(l==0)
-		  	start=i;
+			{
+               start.x=i;
+			   start.y=column;
+			}
 		  	l++;
 		  	if(l==len)
 		  	{
-		  		int end=i;
-		  		cout<<str<<" at ("<<start<<","<<end<<") Finded vertical bottom to top"<<endl;
+		  		paired end;
+				end.x=i;
+				end.y=column;
+		  		cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded vertical bottom to top"<<endl;
 				wordfound=true;
 			  }
 		  	
@@ -111,14 +137,19 @@ void diagonal(char board[][col],string str)
 			{
 				if(str[l]==board[i][j])
 		    {
-		    	int start;
+		    	paired start;
 		    	if(l==0)
-		  	    start=i;
+				{
+                  start.x=i;
+				  start.y=j;
+				}
 		  	    l++;
 		  	    if(l==len)
 		  	     {
-		  	     	int end=i;
-		  		    cout<<str<<" at ("<<start<<","<<end<<") Finded  first diagonal top to bottom"<<endl;
+		  	     	paired end;
+					end.x=i;
+					end.y=j;
+		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded  first diagonal top to bottom"<<endl;
 					wordfound=true;
 			    }
 		  	
@@ -135,14 +166,19 @@ void diagonal(char board[][col],string str)
 			{
 				if(str[l]==board[i][j])
 		    {
-		    	int start;
+		    	paired start;
 		    	if(l==0)
-		  	    start=i;
+				{
+                   start.x=i;
+				   start.y=j;
+				}
 		  	    l++;
 		  	    if(l==len)
 		  	     {
-		  	     	int end=i;
-		  		    cout<<str<<" at ("<<start<<","<<end<<") Finded  first diagonal bottom to top"<<endl;
+		  	     	paired end;
+					end.x=i;
+					end.y=j;
+		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded  first diagonal bottom to top"<<endl;
 				    wordfound=true;
 			    }
 		  	
@@ -160,14 +196,19 @@ void diagonal(char board[][col],string str)
 			{
 				if(str[l]==board[i][j])
 		    {
-		    	int start;
+		    	paired start;
 		    	if(l==0)
-		  	    start=i;
+		  	    {
+					start.x=i;
+					start.y=j;
+				}
 		  	    l++;
 		  	    if(l==len)
 		  	    {
-		  	     	int end=i;
-		  		    cout<<str<<" at ("<<start<<","<<end<<") Finded second diagonal top to bottom"<<endl;
+		  	     	paired end;
+					end.x=i;
+					end.y=j;
+		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded second diagonal top to bottom"<<endl;
 					wordfound=true;
 			    }
 		  	
@@ -185,14 +226,19 @@ void diagonal(char board[][col],string str)
 			{
 				if(str[l]==board[i][j])
 		    {
-		    	int start;
+		    	paired start;
 		    	if(l==0)
-		  	    start=i;
+				{
+					start.x=i;
+					start.y=j;
+				}
 		  	    l++;
 		  	    if(l==len)
 		  	     {
-		  	     	int end=i;
-		  		    cout<<str<<" at ("<<start<<","<<end<<") Finded second diagonal bottom to top"<<endl;
+		  	     	paired end;
+					end.x=i;
+					end.y=j;
+		  		    cout<<str<<" at ("<<start.x<<","<<start.y<<") and end at ("<<end.x<<","<<end.y<<") Finded second diagonal bottom to top"<<endl;
 					wordfound=true;
 			    }
 		    }
@@ -212,13 +258,12 @@ int main()
 			cin>>board[i][j];
 		}
 	}
+	string str;
 	do
 	{
 	  wordfound=false;
-	  string str;
-	  cin.ignore();
 	  cout<<"Enter Word : ";
-	  getline(cin,str);
+	  cin>>str;
 	  horizontal(board,str);
 	  vertical(board,str);
 	  diagonal(board,str);
@@ -226,5 +271,5 @@ int main()
 	  {
 	  	cout<<"String Not Found";
 	  }	
-	}while(1);
+	}while(str!="exit");
 }
