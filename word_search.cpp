@@ -2,7 +2,7 @@
 #include<string>
 using namespace std;
 
-const int col=3;
+const int col=1000;
 bool wordfound;
 
 struct paired
@@ -11,14 +11,14 @@ struct paired
 	int y;
 };
 
-void horizontal(char board[][col],string str)
+void horizontal(char board[][col],string str,int nr,int nc)
 {
 	int len=str.length();
 	int l;
-	for(int row=0;row<3;row++)
+	for(int row=0;row<nr;row++)
 	{
 		l=0;
-	for(int i=0;i<3;i++)
+	for(int i=0;i<nc;i++)
 	{
 		if(str[l]==board[row][i])
 		{
@@ -40,10 +40,10 @@ void horizontal(char board[][col],string str)
 		}
 	}
     }
-    for(int row=0;row<3;row++)
+    for(int row=0;row<nr;row++)
     {
 	l=0;
-	for(int i=2;i>=0;i--)
+	for(int i=nc-1;i>=0;i--)
 	{
 		  if(str[l]==board[row][i])
 		  {
@@ -68,14 +68,14 @@ void horizontal(char board[][col],string str)
    }
 }
 
-void vertical(char board[][col],string str)
+void vertical(char board[][col],string str,int nr,int nc)
 {
 	int len=str.length();
 	int l;
-	for(int column=0;column<3;column++)
+	for(int column=0;column<nc;column++)
 	{
 		l=0;
-	for(int i=0;i<3;i++)
+	for(int i=0;i<nr;i++)
 	{
 		if(str[l]==board[i][column])
 		{
@@ -97,10 +97,10 @@ void vertical(char board[][col],string str)
 		}
 	}
     }
-    for(int column=0;column<10;column++)
+    for(int column=0;column<nc;column++)
     {
 	  l=0;
-	for(int i=2;i>=0;i--)
+	for(int i=nr-1;i>=0;i--)
 	{
 		  if(str[l]==board[i][column])
 		  {
@@ -125,13 +125,13 @@ void vertical(char board[][col],string str)
     }
 }
 
-void diagonal(char board[][col],string str)
+void diagonal(char board[][col],string str,int nr,int nc)
 {
 	int len=str.length();
 	int l=0;
-	for(int i=0;i<3;i++)
+	for(int i=0;i<nr;i++)
 	{
-		for(int j=0;j<3;j++)
+		for(int j=0;j<nc;j++)
 		{
 			if(i==j)
 			{
@@ -158,9 +158,9 @@ void diagonal(char board[][col],string str)
 		 } 
 	}
 	l=0;
-	for(int i=2;i>=0;i--)
+	for(int i=nr-1;i>=0;i--)
 	{
-		for(int j=2;j>=0;j--)
+		for(int j=nc-1;j>=0;j--)
 		{
 			if(i==j)
 			{
@@ -188,9 +188,9 @@ void diagonal(char board[][col],string str)
 	}
 
 	l=0;
-	for(int i=0;i<3;i++)
+	for(int i=0;i<nr;i++)
 	{
-		for(int j=0;j<3;j++)
+		for(int j=0;j<nc;j++)
 		{
 			if(i==col-j-1)
 			{
@@ -218,9 +218,9 @@ void diagonal(char board[][col],string str)
 	}
 
 	l=0;
-	for(int i=2;i>=0;i--)
+	for(int i=nr-1;i>=0;i--)
 	{
-		for(int j=2;j>=0;j--)
+		for(int j=nc-1;j>=0;j--)
 		{
 			if(i==col-j-1)
 			{
@@ -249,11 +249,14 @@ void diagonal(char board[][col],string str)
 
 int main()
 {
-	char board[3][col];
+	int r,c;
+	cout<<"Enter Rows And Columns : ";
+	cin>>r>>c;
+	char board[r][col];
 	cout<<"Enter Characters : ";
-	for(int i=0;i<3;i++)
+	for(int i=0;i<r;i++)
 	{
-		for(int j=0;j<3;j++)
+		for(int j=0;j<c;j++)
 		{
 			cin>>board[i][j];
 		}
@@ -264,9 +267,9 @@ int main()
 	  wordfound=false;
 	  cout<<"Enter Word : ";
 	  cin>>str;
-	  horizontal(board,str);
-	  vertical(board,str);
-	  diagonal(board,str);
+	  horizontal(board,str,r,c);
+	  vertical(board,str,r,c);
+	  diagonal(board,str,r,c);
 	  if(!wordfound)
 	  {
 	  	cout<<"String Not Found";
