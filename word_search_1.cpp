@@ -253,9 +253,9 @@ void diagonal3(char board[][col],string str,int nr,int nc,int s)
 	int l=0;
     for(int i=0;i<nr;i++)
 	{
-		for(int j=nc-1;j>=0;j--)
+		for(int j=0;j<nc;j++)
 		{
-			if(i==j && j+s>=0)
+			if(i==nc-j-1 && nc-j-1+s>=0)
 			{
                 
 				if(str[l]==board[i][j+s])
@@ -283,9 +283,9 @@ void diagonal3(char board[][col],string str,int nr,int nc,int s)
     l=0;
     for(int i=0;i<nr;i++)
     {
-        for(int j=nc-1;j>=0;j--)
+        for(int j=0;j<nc;j++)
         {
-            if(i==j && j-s<=nc-1)
+            if(i==nc-j-1 && nc-j-1-s<=nc-1)
 			{
                 
 				if(str[l]==board[i][j-s])
