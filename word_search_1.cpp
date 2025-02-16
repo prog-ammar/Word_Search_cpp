@@ -412,7 +412,7 @@ int main()
 	do
 	{
 	  wordfound=false;
-	  cout<<"Enter Word : ";
+	  cout<<"Enter Word : "<<endl;
 	  cin>>str;
       if(str=="exit")
       {
