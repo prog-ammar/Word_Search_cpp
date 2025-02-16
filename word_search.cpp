@@ -253,7 +253,7 @@ int main()
 	cout<<"Enter Rows And Columns : ";
 	cin>>r>>c;
 	char board[r][col];
-	cout<<"Enter Characters : ";
+	cout<<"Enter Characters : "<<endl;
 	for(int i=0;i<r;i++)
 	{
 		for(int j=0;j<c;j++)
